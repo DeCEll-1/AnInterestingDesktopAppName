@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AnInterestingDesktopAppName.Classes;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -64,14 +65,17 @@ namespace AnInterestingWebSiteName.Classes
         public void Save(BaseClass saveableThing)
         {
             string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string dataFilePath = Path.Combine(documentsPath, "Data.txt");
+
+            string folderPath = Path.Combine(documentsPath, "AnInterestingDesktopAppName");
+
+            string dataFilePath = Path.Combine(folderPath, "Data.txt");
 
             using (StreamWriter sw = new StreamWriter(dataFilePath, false))
             {
-                sw.Flush();
                 sw.Write(XMLSerialize(saveableThing));
-                sw.Close();
             }
+
+            Statics.db = saveableThing;
         }
 
         public string XMLSerialize(BaseClass thingToSerialize)
