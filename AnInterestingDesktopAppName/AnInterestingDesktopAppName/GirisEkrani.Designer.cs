@@ -32,8 +32,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tb_Sifre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_Submit = new System.Windows.Forms.Button();
+            this.btn_Error = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tb_Mail
@@ -41,7 +41,8 @@
             this.tb_Mail.Location = new System.Drawing.Point(53, 12);
             this.tb_Mail.Name = "tb_Mail";
             this.tb_Mail.Size = new System.Drawing.Size(169, 20);
-            this.tb_Mail.TabIndex = 0;
+            this.tb_Mail.TabIndex = 1;
+            this.tb_Mail.Text = "poedx2@gmail.com";
             // 
             // label1
             // 
@@ -57,7 +58,8 @@
             this.tb_Sifre.Location = new System.Drawing.Point(53, 38);
             this.tb_Sifre.Name = "tb_Sifre";
             this.tb_Sifre.Size = new System.Drawing.Size(169, 20);
-            this.tb_Sifre.TabIndex = 0;
+            this.tb_Sifre.TabIndex = 2;
+            this.tb_Sifre.Text = "123456789";
             // 
             // label2
             // 
@@ -68,31 +70,34 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Şifre:";
             // 
-            // button1
+            // btn_Submit
             // 
-            this.button1.Location = new System.Drawing.Point(133, 64);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 35);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_Submit.Location = new System.Drawing.Point(133, 64);
+            this.btn_Submit.Name = "btn_Submit";
+            this.btn_Submit.Size = new System.Drawing.Size(90, 35);
+            this.btn_Submit.TabIndex = 3;
+            this.btn_Submit.Text = "Giriş";
+            this.btn_Submit.UseVisualStyleBackColor = true;
+            this.btn_Submit.Click += new System.EventHandler(this.btn_Submit_Click);
             // 
-            // button2
+            // btn_Error
             // 
-            this.button2.Location = new System.Drawing.Point(12, 64);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(115, 35);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_Error.Enabled = false;
+            this.btn_Error.Location = new System.Drawing.Point(12, 64);
+            this.btn_Error.Name = "btn_Error";
+            this.btn_Error.Size = new System.Drawing.Size(115, 35);
+            this.btn_Error.TabIndex = 3;
+            this.btn_Error.UseVisualStyleBackColor = true;
+            this.btn_Error.Visible = false;
             // 
             // GirisEkrani
             // 
+            this.AcceptButton = this.btn_Submit;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(234, 111);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_Error);
+            this.Controls.Add(this.btn_Submit);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tb_Sifre);
@@ -100,6 +105,7 @@
             this.Name = "GirisEkrani";
             this.Text = "GirisEkrani";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GirisEkrani_FormClosed);
+            this.Load += new System.EventHandler(this.GirisEkrani_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,7 +117,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tb_Sifre;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_Submit;
+        private System.Windows.Forms.Button btn_Error;
     }
 }
