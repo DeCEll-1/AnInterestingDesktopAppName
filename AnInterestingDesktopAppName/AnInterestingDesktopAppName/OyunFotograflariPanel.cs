@@ -41,7 +41,7 @@ namespace AnInterestingDesktopAppName
 
             if (Urun_ID != null)
             {
-                IEnumerable<AnInterestingWebSiteName.Models.OyunResimleri> fvds = db.OyunResimleri.ToList().AsEnumerable().Where(s => s.Aktifmi == a && s.Oyun_ID == Urun_ID);
+                IEnumerable<AnInterestingWebSiteName.Models.OyunResimleri> fvds = db.OyunResimleri.ToList().AsEnumerable().Where(s => s.Aktifmi == !a && s.Oyun_ID == Urun_ID);
 
                 DGV_YoneticiView.DataSource = fvds.ToList();
                 DGV_YoneticiView.Columns["Aktifmi"].Visible = false;
@@ -123,7 +123,7 @@ namespace AnInterestingDesktopAppName
 
         private void btn_Sil_Click(object sender, EventArgs e)
         {
-            if (a)
+            if (!a)
             {
                 db.OyunResimleri.First(s => s.ID == oyunResimleri.ID).Aktifmi = false;
                 new SerilisationStuff().Save(db);
@@ -141,17 +141,7 @@ namespace AnInterestingDesktopAppName
 
         private void btn_Aktif_Click(object sender, EventArgs e)
         {
-            if (a)
-            {
-                btn_Aktif.Text = "Silinenleri Göster";
-                btn_Sil.Text = "Sil";
-
-                btn_Sil.Enabled = false;
-
-                a = false;
-                OyunFotograflariPanel_Load(null, null);
-            }
-            else
+            if (!a)
             {
                 btn_Aktif.Text = "Silinmeyenleri Göster";
                 btn_Sil.Text = "Geri Getir";
@@ -159,8 +149,17 @@ namespace AnInterestingDesktopAppName
                 btn_Sil.Enabled = false;
 
                 a = true;
-                OyunFotograflariPanel_Load(null, null);
             }
+            else
+            {
+                btn_Aktif.Text = "Silinenleri Göster";
+                btn_Sil.Text = "Sil";
+
+                btn_Sil.Enabled = false;
+
+                a = false;
+            }
+            OyunFotograflariPanel_Load(null, null);
             btn_Reset_Click(null, null);
         }
 
